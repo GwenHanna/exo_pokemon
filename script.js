@@ -5,7 +5,7 @@ let imgLoad = document.querySelector('.imgLoad')
 setTimeout(() => {
     $('.body').removeClass('in-active')
     $('.load').addClass('in-active')
-    let id = 120;
+    let id = 100;
     $(document).ready(function(){
         const url = `https://pokebuildapi.fr/api/v1/pokemon/limit/${id}`
        const x = $.ajax({
