@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"function.js":[function(require,module,exports) {
+})({"src/function.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -222,7 +222,7 @@ var colours = {
   acier: '#B7B7CE',
   fée: '#D685AD'
 };
-},{}],"script.js":[function(require,module,exports) {
+},{}],"src/script.js":[function(require,module,exports) {
 "use strict";
 
 var _function = require("./function.js");
@@ -243,6 +243,9 @@ $(document).ready(function () {
         var searchInputPokemon = (0, _function.filtreTexte)(dataPokemon, e.target.value);
         console.log(searchInputPokemon);
         renderCards(searchInputPokemon);
+        $("#btnReset").click(function () {
+          renderCards(dataPokemon);
+        });
       });
       renderCards(dataPokemon);
     },
@@ -297,7 +300,7 @@ $(document).ready(function () {
     }
   });
 });
-},{"./function.js":"function.js"}],"../../../Users/HB/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./function.js":"src/function.js"}],"../../../Users/HB/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -322,7 +325,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60817" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49587" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -466,5 +469,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../Users/HB/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script.js"], null)
-//# sourceMappingURL=/script.75da7f30.js.map
+},{}]},{},["../../../Users/HB/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/script.js"], null)
+//# sourceMappingURL=/script.baf0e655.js.map
