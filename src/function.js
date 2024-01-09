@@ -104,10 +104,6 @@ export function filtreTexte(arr, requete) {
     })
 }
 
-function displayCard(){
-
-}
-
 
 const colours = {
     normal: '#A8A77A',

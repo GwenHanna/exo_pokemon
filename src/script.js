@@ -5,37 +5,16 @@ import {
   filtreTexte,
 } from "./function.js";
 
+// Cette fonction permet de s'assurer que tout ce qui se trouve à l'intérieur sera exécuté une fois le document HTML chargé.
 $(document).ready(function () {
+  // Un petit système de loading
   $(".body").removeClass("in-active");
   $(".load").addClass("in-active");
 
+  // Initialisation de mes variables
   let dataPokemon = [];
-  let id = 100;
-
-  const url = `https://pokebuildapi.fr/api/v1/pokemon/limit/${id}`;
-  $.ajax({
-    type: "GET",
-    url: url,
-    dataType: "json",
-    success: (data) => {
-      dataPokemon = data;
-
-      let inputSearch = document.querySelector("#searchPokemon");
-      inputSearch.addEventListener("input", (e) => {
-        let searchInputPokemon = filtreTexte(dataPokemon, e.target.value);
-        console.log(searchInputPokemon);
-        renderCards(searchInputPokemon);
-        $("#btnReset").click(function () {
-          renderCards(dataPokemon);
-        });
-      });
-
-      renderCards(dataPokemon);
-    },
-    error: () => {
-      console.log("error");
-    },
-  });
+  const nbPokemon = 100;
+  const url = `https://pokebuildapi.fr/api/v1/pokemon/limit/${nbPokemon}`;
 
   function renderCards(pokemonData) {
     let main = document.querySelector("main");
@@ -78,6 +57,32 @@ $(document).ready(function () {
     });
   }
 
+  // Requête à l'API des pokemons
+  $.ajax({
+    type: "GET",
+    url: url,
+    dataType: "json",
+    success: (data) => {
+      dataPokemon = data;
+
+      let inputSearch = document.querySelector("#searchPokemon");
+      inputSearch.addEventListener("input", (e) => {
+        let searchInputPokemon = filtreTexte(dataPokemon, e.target.value);
+
+        renderCards(searchInputPokemon);
+        $("#btnReset").click(function () {
+          renderCards(dataPokemon);
+        });
+      });
+
+      renderCards(dataPokemon);
+    },
+    error: () => {
+      console.log("error");
+    },
+  });
+
+  // Gestion du formulaire de recherche
   $("form").on("submit", function (event) {
     event.preventDefault();
     $("form").addClass("in-active");
